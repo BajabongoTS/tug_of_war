@@ -1,18 +1,14 @@
 "use client";
 
-import { useEffect } from "react";
-import { ref, set } from "firebase/database";
-import { db } from "../app/lib/firebase";
+import Link from "next/link";
 
-export default function Page() {
-  useEffect(() => {
-    set(ref(db, "ping"), {
-      status: "ok",
-      time: Date.now(),
-    })
-      .then(() => console.log("✅ Firebase działa"))
-      .catch(console.error);
-  }, []);
-
-  return <div>Firebase test</div>;
+export default function Home() {
+  return (
+    <div>
+      <h1>Tug of War</h1>
+      <div className="flex justify-center gap-4">
+        <Link href="/tug_of_war_game">Play Tug of War</Link>
+      </div>
+    </div>
+  );
 }
